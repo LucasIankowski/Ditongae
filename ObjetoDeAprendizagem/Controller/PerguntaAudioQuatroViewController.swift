@@ -1,5 +1,5 @@
 //
-//  PerguntaAudioUmViewController.swift
+//  PerguntaAudioQuatroViewController.swift
 //  ObjetoDeAprendizagem
 //
 //  Created by Lucas Iankowski Corrêa da Silva on 20/11/21.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class PerguntaAudioUmViewController: UIViewController, AVAudioRecorderDelegate {
+class PerguntaAudioQuatroViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var startRecording: UIButton!
     @IBOutlet weak var listenButton: UIButton!
     
@@ -22,11 +22,11 @@ class PerguntaAudioUmViewController: UIViewController, AVAudioRecorderDelegate {
     
     var numberOfRecords = 0
     
-    var nomeDoArquivo = "primeiroAudio"
+    var nomeDoArquivo = "quartoAudio"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        
         recordingSession = AVAudioSession.sharedInstance()
         
         //Se existir audio persistido no sistema entao deixa passar

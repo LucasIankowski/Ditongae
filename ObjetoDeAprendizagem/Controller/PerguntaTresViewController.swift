@@ -1,18 +1,19 @@
 //
-//  PerguntaUmViewController.swift
+//  PerguntaTresViewController.swift
 //  ObjetoDeAprendizagem
 //
-//  Created by Lucas Iankowski Corrêa da Silva on 19/11/21.
+//  Created by Lucas Iankowski Corrêa da Silva on 20/11/21.
 //
 
 import UIKit
 
-class PerguntaUmViewController: UIViewController {
+class PerguntaTresViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
     @IBAction func respostaSim(_ sender: Any) {
         var estudante: Estudante?
         // Read/Get Data
@@ -29,7 +30,7 @@ class PerguntaUmViewController: UIViewController {
             }
         }
         
-        let novoEstudante = Estudante(nome: estudante!.nome, respostaAudioUm: true, respostaAudioDois: true, respostaAudioTres: true, respostaAudioQuatro: true, respostaUm: "S", respostaDois: estudante!.respostaDois, respostaTres: estudante!.respostaTres, respostaQuatro: estudante!.respostaQuatro, respostaCinco: estudante!.respostaCinco, respostaSeis: estudante!.respostaSeis, respostaSete: estudante!.respostaSete)
+        let novoEstudante = Estudante(nome: estudante!.nome, respostaAudioUm: true, respostaAudioDois: true, respostaAudioTres: true, respostaAudioQuatro: true, respostaUm: estudante!.respostaUm, respostaDois: estudante!.respostaDois, respostaTres: "S", respostaQuatro: estudante!.respostaQuatro, respostaCinco: estudante!.respostaCinco, respostaSeis: estudante!.respostaSeis, respostaSete: estudante!.respostaSete)
         
         do {
             // Create JSON Encoder
@@ -62,7 +63,7 @@ class PerguntaUmViewController: UIViewController {
             }
         }
         
-        let novoEstudante = Estudante(nome: estudante!.nome, respostaAudioUm: true, respostaAudioDois: true, respostaAudioTres: true, respostaAudioQuatro: true, respostaUm: "N", respostaDois: estudante!.respostaDois, respostaTres: estudante!.respostaTres, respostaQuatro: estudante!.respostaQuatro, respostaCinco: estudante!.respostaCinco, respostaSeis: estudante!.respostaSeis, respostaSete: estudante!.respostaSete)
+        let novoEstudante = Estudante(nome: estudante!.nome, respostaAudioUm: true, respostaAudioDois: true, respostaAudioTres: true, respostaAudioQuatro: true, respostaUm: estudante!.respostaUm, respostaDois: estudante!.respostaDois, respostaTres: "N", respostaQuatro: estudante!.respostaQuatro, respostaCinco: estudante!.respostaCinco, respostaSeis: estudante!.respostaSeis, respostaSete: estudante!.respostaSete)
         
         do {
             // Create JSON Encoder
@@ -77,7 +78,6 @@ class PerguntaUmViewController: UIViewController {
         } catch {
             print("Unable to Encode Array of Notes (\(error))")
         }
-        
     }
     
     

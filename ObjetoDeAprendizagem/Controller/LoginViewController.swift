@@ -23,6 +23,22 @@ class LoginViewController: UIViewController {
         //turma de debug
         turmas.append(Turma(nome: "232", senha: "abc123", numeroDeAlunos: 0, estudantes: []))
         
+        let novoAluno = Estudante(nome: nomeAluno.text ?? "", respostaAudioUm: false, respostaAudioDois: false, respostaAudioTres: false, respostaAudioQuatro: false, respostaUm: "", respostaDois: "", respostaTres: "", respostaQuatro: "", respostaCinco: "", respostaSeis: "", respostaSete: "")
+        
+        do {
+            // Create JSON Encoder
+            let encoder = JSONEncoder()
+
+            // Encode Note
+            let data = try encoder.encode(novoAluno)
+
+            // Write/Set Data
+            UserDefaults.standard.set(data, forKey: "novoEstudante")
+            
+        } catch {
+            print("Unable to Encode Note (\(error))")
+        }
+        
         for turmaL in turmas{
             if turmaL.nome == turma.text! && turmaL.senha == senha.text!{
                 return true
@@ -34,10 +50,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginProcess(_ sender: Any) {
         if loginExists() && nomeAluno.hasText{
+            
             performSegue(withIdentifier: "loginToPerguntas", sender: sender)
         }
         else if !nomeAluno.hasText{
-            let alert = UIAlertController(title: "Erro", message: "Por favor, preencha o campo com o seu nome corretamente.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Atenção", message: "Por favor, preencha o campo com o seu nome corretamente.", preferredStyle: UIAlertController.Style.alert)
 
                     // add an action (button)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -46,7 +63,7 @@ class LoginViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
         }
         else if !loginExists(){
-            let alert = UIAlertController(title: "Erro", message: "A turma não existe, revise as informações junto ao seu professor.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Atenção", message: "A turma não existe, revise as informações junto ao seu professor.", preferredStyle: UIAlertController.Style.alert)
 
                     // add an action (button)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -55,6 +72,7 @@ class LoginViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
         }
     }
+    
     
     func loadTurmas() -> [Turma] {
         if let data = UserDefaults.standard.data(forKey: "turmas") {
